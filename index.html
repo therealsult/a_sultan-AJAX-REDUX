@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax Redux</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link href="css/grid.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <script defer src="js/main.js"></script>
+</head>
+<body>
+  <div class="grid-con">
+
+    <section class="col-span-full" id="title">
+      <h1 class="hidden">Title</h1>
+      <h2>Star Wars</h2>
+    </section>
+
+    <section class="col-span-full m-col-span-6" id="movie-box">
+      <h1 class="hidden">Movies</h1>
+      <h2>Most Popular</h2>
+    </section>
+
+    <section class="col-span-full m-col-span-6" id="review-box">
+      <h1 class="hidden">Review</h1>
+      <h2>Overview</h2>
+        <div id="review-con">
+        </div>
+          <template id="review-template">
+            <section>
+              <h3 class="review-heading"></h3>
+              <p class="review-author"></p>
+              <p class="review-description"></p>
+            </section>
+          </template>
+    </section>
+
+  </div>  
+</body>
+</html>
