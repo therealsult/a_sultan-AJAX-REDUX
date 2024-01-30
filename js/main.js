@@ -67,23 +67,26 @@
     gsap.fromTo('.title', {
         y: 40, opacity: 0,
     },
-      {delay: 0.5, duration: .5, y: 0, opacity: 1, ease: 'power2.easeOut',
- 
-    })
+        {
+            delay: 0.5, duration: .5, y: 0, opacity: 1, ease: 'power2.easeOut',
+
+        })
 
     gsap.fromTo('.subtitle', {
         y: 40, opacity: 0,
     },
-      {delay: 1.5, duration: .5, y: 0, opacity: 1, ease: 'power2.easeOut',
- 
-    })
+        {
+            delay: 1.5, duration: .5, y: 0, opacity: 1, ease: 'power2.easeOut',
+
+        })
 
     gsap.fromTo('.review-description', {
         y: 40, opacity: 0,
     },
-      {delay: 0.5, duration: .5, y: 0, opacity: 1, ease: 'power2.easeOut',
- 
-    })
+        {
+            delay: 0.5, duration: .5, y: 0, opacity: 1, ease: 'power2.easeOut',
+
+        })
 
 
 })();

@@ -167,7 +167,8 @@ nav a:hover::after {
   padding-bottom: 20px;
 }
 
-#cta p, #title p {
+#cta p,
+#title p {
   margin-left: 50px;
 }
 
@@ -183,7 +184,7 @@ nav a:hover::after {
 }
 
 #line {
-  border-bottom: solid 1px white ;
+  border-bottom: solid 1px white;
 }
 
 
@@ -257,7 +258,7 @@ li {
 
 
 @media (min-width: 350px) {
-  body{
+  body {
     background-image: url(../images/starwars-bg-2.jpg);
   }
-  }
+}
