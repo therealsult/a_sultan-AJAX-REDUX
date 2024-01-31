@@ -1,82 +1,99 @@
 (() => {
 
-    window.addEventListener("load", () => {
-        document.querySelector(".loader-wrapper").classList.add("loader-wrapper--hidden");
-    })
+    /* LOADING SPINNER */
 
-    const movieBox = document.querySelector("#movie-box");
-    const reviewTemplate = document.querySelector("#review-template");
-    const reviewCon = document.querySelector("#review-con");
-    const baseUrl = `https://search.imdbot.workers.dev/`;
-    // const baseUrl = `https://swapi.dev/api/films/2/`;
+    const spinner = `<img src="images/tail-spin.svg" alt="loading" class="spinner"> `;
 
+    function displaySpinner(element) {
+        const spinnerDiv = document.createElement('div');
+        spinnerDiv.classList.add('custom-spinner');
+        spinnerDiv.innerHTML = spinner;
+        element.appendChild(spinnerDiv);
+    }
 
-    function getMovies() {
-        fetch(`${baseUrl}?q=Star Wars`)
-            .then((response) => response.json())
-            .then(function (response) {
-                const movies = response.description;
-                const ul = document.createElement("ul");
-                movies.forEach((movie) => {
-                    const li = document.createElement("li");
-                    const a = document.createElement("a");
-                    a.textContent = movie["#TITLE"];
-                    a.dataset.review = movie["#IMDB_ID"];
-                    li.appendChild(a);
-                    ul.appendChild(li);
-                });
-                movieBox.appendChild(ul);
-            })
-
-            .then(function () {
-                const links = document.querySelectorAll("#movie-box li a");
-                links.forEach((link) => {
-                    link.addEventListener("click", getReview);
-                });
-            })
-
-            .catch((error) => {
-                console.log(error);
-            });
+    function removeSpinner(element) {
+        const spinnerDiv = element.querySelector(".custom-spinner");
+        if (spinnerDiv) {
+            spinnerDiv.remove();
+        }
     }
 
 
+    /* API FETCH */
 
-    function getReview(e) {
-        const reviewID = e.currentTarget.dataset.review;
-        //  https://search.imdbot.workers.dev/?tt=tt0111257
-        fetch(`${baseUrl}?tt=${reviewID}`)
-            .then((response) => response.json())
-            .then(function (response) {
-                reviewCon.innerHTML = "";
-                console.log(response.short.review.reviewBody);
-                const template = document.importNode(reviewTemplate.content, true);
-                const reviewBody = template.querySelector(".review-description");
-                reviewBody.innerHTML = response.short.review.reviewBody;
-                reviewCon.appendChild(template);
+    const starBox = document.querySelector("#star-box");
+    const movieCon = document.querySelector("#movie-con");
+
+    function displayCharacters() {
+        displaySpinner(starBox);
+        fetch('https://swapi.dev/api/people/?format=json')
+            .then(response => response.json())
+            .then(data => {
+                removeSpinner(starBox);
+                const chars = document.createElement("ul");
+                data.results.forEach(character => {
+                    const listItem = document.createElement("li");
+                    const link = document.createElement("a");
+                    link.textContent = character.name;
+                    link.href = "#";
+                    const filmIndex = Math.floor(Math.random() * character.films.length);
+                    link.dataset.filmUrl = character.films[filmIndex];
+                    link.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        displaystarDetails(link.dataset.filmUrl);
+                    });
+
+                    listItem.appendChild(link);
+                    chars.appendChild(listItem);
+                });
+                starBox.appendChild(chars);
             })
-
-            .catch((error) => {
-                console.log(error);
+            .catch(error => {
+                console.error('Error fetching characters:', error);
+                removeSpinner(starBox);
             });
     }
 
-    getMovies();
+    function displaystarDetails(filmUrl) {
+        movieCon.innerHTML = '';
+        displaySpinner(movieCon);
 
+        fetch(filmUrl)
+            .then(response => response.json())
+            .then(filmData => {
+                const starImage = `images/image${filmData.episode_id}.jpg`;
+                movieCon.innerHTML = `
+          <h3 class="movie-title">${filmData.title}</h3>
+          <div class="p-box">
+            <p>${filmData.opening_crawl}</p>
+            <img  class="img" src="${starImage}" alt="star Poster: ${filmData.title}">
+          </div>`;
+                removeSpinner(movieCon);
+            })
+            .catch(error => {
+                console.error('Error fetching star details:', error);
+                removeSpinner(movieCon);
+            });
+    }
+
+    displayCharacters();
+
+
+    /* GSAP ANIMATIONS */
 
     gsap.fromTo('.title', {
         y: 40, opacity: 0,
     },
         {
-            delay: 0.5, duration: .5, y: 0, opacity: 1, ease: 'power2.easeOut',
+            delay: 0.5, duration: .8, y: 0, opacity: 1, ease: 'power2.easeOut',
 
         })
 
     gsap.fromTo('.subtitle', {
-        y: 40, opacity: 0,
+        y: -40, opacity: 0,
     },
         {
-            delay: 1.5, duration: .5, y: 0, opacity: 1, ease: 'power2.easeOut',
+            delay: 1.5, duration: .3, y: 0, opacity: 1, ease: 'power2.easeOut',
 
         })
 
@@ -87,8 +104,4 @@
             delay: 0.5, duration: .5, y: 0, opacity: 1, ease: 'power2.easeOut',
 
         })
-
-
 })();
-
-
