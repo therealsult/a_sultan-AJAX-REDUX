@@ -219,6 +219,8 @@ li {
     margin: 0 30px 30px 30px;
   }
 
+  
+
 }
 
 @media screen and (max-width:480px) {
@@ -226,9 +228,7 @@ li {
     background-image: url(../images/starwars-bg-3.jpg);
   }
 
-  .img {
-    margin-left: 28%;
-  }
+  
 
   #star-box {
     height:490px;
@@ -242,5 +242,7 @@ li {
   #cta h2 {
     margin: 0 30px 30px 30px;
   }
+
+ 
 
 }
