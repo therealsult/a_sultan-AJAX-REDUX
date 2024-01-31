@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-image: url(../images/starwars-bg-2.jpg);
   background-size: cover;
@@ -12,21 +17,12 @@ a {
   cursor: pointer;
 }
 
-.spinner{
+.spinner {
   animation: rotation 6s infinite linear;
 }
 
 
 /* header */
-
-
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display+SC');
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
 header img {
   display: block;
   width: 20%;
@@ -35,7 +31,7 @@ header img {
 }
 
 header {
-  background: rgb(5, 7, 8);
+  background: rgb(0, 0, 0);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -74,11 +70,11 @@ nav a:hover::after {
   transform: scaleX(1);
 }
 
-/* body css */
 
+/* body css */
 #title,
 #cta {
-  background-color: rgb(5, 7, 8);
+  background-color: rgb(0, 0, 0);
 }
 
 
@@ -91,7 +87,7 @@ nav a:hover::after {
   margin-left: 80px;
 }
 
-#cta p{
+#cta p {
   margin-left: 120px;
 }
 
@@ -191,10 +187,16 @@ li {
   margin-top: 20px;
 }
 
+
+
+
+
+
 @media screen and (max-width:768px) {
   body {
     background-image: url(../images/starwars-bg-2.jpg);
   }
+
   #star-box {
     height: 490px;
   }
@@ -202,7 +204,8 @@ li {
   #movie-box {
     height: 700px;
   }
-  #cta p h2{
+
+  #cta p h2 {
     margin: 0 30px 30px 30px;
   }
 
@@ -225,7 +228,8 @@ li {
     height: 700px;
   }
 
-  #cta p, #cta h2{
+  #cta p,
+  #cta h2 {
     margin: 0 30px 30px 30px;
   }
 
