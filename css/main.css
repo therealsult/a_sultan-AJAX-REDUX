@@ -12,74 +12,8 @@ a {
   cursor: pointer;
 }
 
-/* loading spinner */
-
-.loader-wrapper {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.808);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 0.7s, visibility 0.7s;
-}
-
-.loader {
-  width: 48px;
-  height: 48px;
-  border: 3px dotted #FFF;
-  border-style: solid solid dotted dotted;
-  border-radius: 50%;
-  display: inline-block;
-  position: relative;
-  box-sizing: border-box;
-  animation: rotation 2s linear infinite;
-}
-
-.loader-wrapper--hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.loader::after {
-  content: '';
-  box-sizing: border-box;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  border: 3px dotted #FF3D00;
-  border-style: solid solid dotted;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  animation: rotationBack 1s linear infinite;
-  transform-origin: center center;
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes rotationBack {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(-360deg);
-  }
+.spinner{
+  animation: rotation 6s infinite linear;
 }
 
 
@@ -101,7 +35,7 @@ header img {
 }
 
 header {
-  background: rgb(0, 0, 0);
+  background: rgb(5, 7, 8);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -140,25 +74,11 @@ nav a:hover::after {
   transform: scaleX(1);
 }
 
-
-
-
-
-
-
-/* hero */
-
-
-#hero {
-  background-color: #000000;
-}
-
-
 /* body css */
 
 #title,
 #cta {
-  background-color: black;
+  background-color: rgb(5, 7, 8);
 }
 
 
@@ -167,9 +87,12 @@ nav a:hover::after {
   padding-bottom: 20px;
 }
 
-#cta p,
-#title p {
-  margin-left: 50px;
+#cta h2 {
+  margin-left: 80px;
+}
+
+#cta p{
+  margin-left: 120px;
 }
 
 #cta a {
@@ -187,19 +110,28 @@ nav a:hover::after {
   border-bottom: solid 1px white;
 }
 
-
-#movie-box,
-#review-box {
-  background-color: rgba(0, 0, 0, 0.521);
-  height: 80vh;
-  max-height: 110vh;
-  overflow: hidden;
-  filter: drop-shadow(0px 2px 16px #000000);
+.img {
+  margin-left: 30%;
+  border: solid 5px white;
 }
 
 
 
-#review-box p {
+#star-box,
+#movie-box {
+  background-color: rgba(0, 0, 0, 0.521);
+  height: 620px;
+  max-height: auto;
+  overflow: hidden;
+  filter: drop-shadow(0px 2px 16px #000000);
+}
+
+#star-box a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+#movie-box p {
   margin-left: 12px;
   margin-right: 10px;
 }
@@ -255,10 +187,46 @@ li {
 }
 
 
+.movie-title {
+  margin-top: 20px;
+}
 
-
-@media (min-width: 350px) {
+@media screen and (max-width:768px) {
   body {
     background-image: url(../images/starwars-bg-2.jpg);
   }
+  #star-box {
+    height: 490px;
+  }
+
+  #movie-box {
+    height: 700px;
+  }
+  #cta p h2{
+    margin: 0 30px 30px 30px;
+  }
+
+}
+
+@media screen and (max-width:480px) {
+  body {
+    background-image: url(../images/starwars-bg-3.jpg);
+  }
+
+  .img {
+    margin-left: 28%;
+  }
+
+  #star-box {
+    height: 490px;
+  }
+
+  #movie-box {
+    height: 700px;
+  }
+
+  #cta p, #cta h2{
+    margin: 0 30px 30px 30px;
+  }
+
 }
