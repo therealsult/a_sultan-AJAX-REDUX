@@ -61,10 +61,16 @@
             .then(filmData => {
                 const starImage = `images/image${filmData.episode_id}.jpg`;
                 movieCon.innerHTML = `
-          <h3 class="movie-title">${filmData.title}</h3>
+          <h3 class="movie-title"> ${filmData.episode_id} - ${filmData.title}</h3>
+          <div class="flexcon">
+          <div><img  class="img" src="${starImage}" alt="star Poster: ${filmData.title}"></div>
+          <div>          <P>Release date: ${filmData.release_date}</P>
+          <P>Director: ${filmData.director}</P>
+          <P>Producer(s): ${filmData.producer}</P></div>
+          </div>
+
           <div class="p-box">
             <p>${filmData.opening_crawl}</p>
-            <img  class="img" src="${starImage}" alt="star Poster: ${filmData.title}">
           </div>`;
                 removeSpinner(movieCon);
             })
