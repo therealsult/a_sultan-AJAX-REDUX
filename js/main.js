@@ -1,7 +1,6 @@
 (() => {
 
     /* LOADING SPINNER */
-
     const spinner = `<img src="images/tail-spin.svg" alt="loading" class="spinner"> `;
 
     function displaySpinner(element) {
@@ -20,7 +19,6 @@
 
 
     /* API FETCH */
-
     const starBox = document.querySelector("#star-box");
     const movieCon = document.querySelector("#movie-con");
 
@@ -79,8 +77,8 @@
     displayCharacters();
 
 
-    /* GSAP ANIMATIONS */
 
+    /* GSAP ANIMATIONS */
     gsap.fromTo('.title', {
         y: 40, opacity: 0,
     },
